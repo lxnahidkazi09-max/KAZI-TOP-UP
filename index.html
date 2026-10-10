@@ -1,0 +1,128 @@
+ <!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAZI TOP UP</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#071126;
+  color:white;
+}
+header{
+  background:#101e42;
+  padding:20px;
+  text-align:center;
+  border-bottom:2px solid #1685ff;
+}
+.logo{font-size:28px;font-weight:bold;color:#ffca28}
+.hero{text-align:center;padding:35px 15px}
+.hero h1{font-size:34px;color:#ffca28}
+.hero p{color:#d8e4ff}
+.container{max-width:700px;margin:auto;padding:15px}
+.card{
+  background:#101e42;
+  border:1px solid #2458a5;
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:15px;
+}
+input,select,button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border-radius:7px;
+  border:none;
+  font-size:16px;
+}
+input,select{background:white;color:#111}
+button{
+  background:#ffca28;
+  color:#101126;
+  font-weight:bold;
+  cursor:pointer;
+}
+.price{color:#ffca28;font-weight:bold}
+footer{text-align:center;padding:25px;color:#b7c5e5}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">👑 KAZI TOP UP 💎</div>
+  <p>Free Fire Diamond Shop</p>
+</header>
+
+<section class="hero">
+  <h1>KAZI TOP UP</h1>
+  <p>তোমার গেমিং, আমাদের দায়িত্ব!</p>
+  <p>💎 সহজে অর্ডার করো</p>
+</section>
+
+<main class="container">
+  <div class="card">
+    <h2>💎 Diamond Packages</h2>
+
+    <label>ডায়মন্ড প্যাকেজ নির্বাচন করো</label>
+    <select id="pack">
+      <option value="50">100 Diamonds</option>
+      <option value="150">310 Diamonds</option>
+      <option value="250">520 Diamonds</option>
+      <option value="500">1060 Diamonds</option>
+    </select>
+
+    <p>মূল্য: ৳<span id="price">50</span></p>
+
+    <label>তোমার Player UID</label>
+    <input id="uid" placeholder="Free Fire Player UID">
+
+    <label>যোগাযোগের তথ্য</label>
+    <input id="contact" placeholder="যোগাযোগের নম্বর">
+
+    <button onclick="orderNow()">অর্ডার করো</button>
+    <p id="result"></p>
+  </div>
+
+  <div class="card">
+    <h2>📦 অর্ডার স্ট্যাটাস</h2>
+    <input id="orderId" placeholder="অর্ডার নম্বর">
+    <button onclick="checkOrder()">স্ট্যাটাস দেখো</button>
+    <p id="status"></p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 KAZI TOP UP</p>
+  <p>সাপোর্টের জন্য যোগাযোগ করো</p>
+</footer>
+
+<script>
+const pack=document.getElementById('pack');
+pack.addEventListener('change',()=>{
+  document.getElementById('price').textContent=pack.value;
+});
+
+function orderNow(){
+  const uid=document.getElementById('uid').value.trim();
+  const contact=document.getElementById('contact').value.trim();
+
+  if(!uid||!contact){
+    alert('Player UID ও যোগাযোগের তথ্য দাও');
+    return;
+  }
+
+  const id='KZT'+Date.now().toString().slice(-7);
+  document.getElementById('result').innerHTML=
+    'অর্ডার নম্বর: <b>'+id+'</b><br>'+
+    'প্যাকেজ: '+pack.options[pack.selectedIndex].text+
+    '<br>এটি শুধু অর্ডারের নমুনা। ডায়মন্ড এখনো পাঠানো হয়নি।';
+}
+function checkOrder(){
+  document.getElementById('status').textContent=
+    'এই ডেমোতে অর্ডারের তথ্য সংরক্ষিত নেই।';
+}
+</script>
+</body>
+</html>
